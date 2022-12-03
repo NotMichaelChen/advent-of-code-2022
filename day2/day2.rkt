@@ -7,10 +7,7 @@
 
 (define hand-mapping (hash "X" "A" "Y" "B" "Z" "C"))
 
-(define raw-input
-  (~> (open-input-file "input.txt")
-      (port->string #:close? #t)
-      (string-split "\n")))
+(define raw-input (file->lines "input.txt"))
 
 (define (parse-round raw-round-str)
   (define round-chars
