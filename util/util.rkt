@@ -1,5 +1,7 @@
 #lang racket
 
+(require racket/match)
+
 (define (take-up-to lst n)
   (if (< (length lst) n)
       lst
@@ -17,5 +19,8 @@
 
 (define (string->set str)
   (list->set (string->list str)))
+
+(define (transpose xss)
+  (apply map list xss))
 
 (provide (all-defined-out))
