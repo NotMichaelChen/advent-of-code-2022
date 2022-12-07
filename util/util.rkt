@@ -23,4 +23,8 @@
 (define (transpose xss)
   (apply map list xss))
 
+(define (print-return obj)
+  (println obj)
+  obj)
+
 (provide (all-defined-out))
