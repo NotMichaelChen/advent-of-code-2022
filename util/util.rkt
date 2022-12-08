@@ -1,7 +1,5 @@
 #lang racket
 
-(require racket/match)
-
 (define (take-up-to lst n)
   (if (< (length lst) n)
       lst
@@ -26,5 +24,17 @@
 (define (print-return obj)
   (println obj)
   obj)
+
+(define (takef-until lst pred)
+  (let-values ([(left right) (splitf-at lst pred)])
+    (if (empty? right)
+        left
+        (append left (list (first right))))))
+
+(define (matrix-map proc matrix)
+  (map (lambda (lst) (map (lambda (elem) (proc elem)) lst)) matrix))
+
+(define (matrix-apply proc matrix)
+  (apply proc (map (lambda (lst) (apply proc lst)) matrix)))
 
 (provide (all-defined-out))
