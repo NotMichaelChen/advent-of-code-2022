@@ -15,6 +15,9 @@
       (cons (take-up-to lst n) (list-chunk (drop-up-to lst n) n))
       null))
 
+(define (list-zip lst1 lst2)
+  (map list lst1 lst2))
+
 (define (string->set str)
   (list->set (string->list str)))
 
