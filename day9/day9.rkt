@@ -85,9 +85,9 @@
 
 (define part1
   (~>> motions
-   (apply-motions (state (posn 0 0) (list (posn 0 0)) (set)))
-   state-hist
-   set-count))
+       (apply-motions (state (posn 0 0) (list (posn 0 0)) (set)))
+       state-hist
+       set-count))
 
 (define part2
   (~>> motions
