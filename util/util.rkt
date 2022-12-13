@@ -25,6 +25,9 @@
 (define (list-zip lst1 lst2)
   (map list lst1 lst2))
 
+(define (list-zip-index lst)
+  (map list lst (range (length lst))))
+
 (define (string->set str)
   (list->set (string->list str)))
 
