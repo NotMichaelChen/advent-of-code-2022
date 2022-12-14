@@ -22,11 +22,25 @@
       (cons (take-up-to lst n) (list-chunk (drop-up-to lst n) n))
       null))
 
+(define (list-window lst n)
+  (reverse
+   (let loop ([acc '()]
+              [lst lst])
+     (if (< (length lst) n)
+         acc
+         (loop (cons (take lst n) acc) (rest lst))))))
+
 (define (list-zip lst1 lst2)
   (map list lst1 lst2))
 
 (define (list-zip-index lst)
   (map list lst (range (length lst))))
+
+(define (takef-until lst pred)
+  (let-values ([(left right) (splitf-at lst pred)])
+    (if (empty? right)
+        left
+        (append left (list (first right))))))
 
 (define (string->set str)
   (list->set (string->list str)))
@@ -40,12 +54,6 @@
 
 (define (println* . vals)
   (for-each println vals))
-
-(define (takef-until lst pred)
-  (let-values ([(left right) (splitf-at lst pred)])
-    (if (empty? right)
-        left
-        (append left (list (first right))))))
 
 (define (vector-where vec proc)
   (let loop ([index 0])
