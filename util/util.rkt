@@ -2,6 +2,12 @@
 
 (struct posn (row col) #:transparent)
 
+(define (posn-add-row pos n)
+  (struct-copy posn pos [row (+ (posn-row pos) n)]))
+
+(define (posn-add-col pos n)
+  (struct-copy posn pos [col (+ (posn-col pos) n)]))
+
 (define (safe-rest lst)
   (if (empty? lst)
       null
